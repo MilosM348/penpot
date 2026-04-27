@@ -50,6 +50,7 @@
 
 ### :bug: Bugs fixed
 
+- Fix Plugin API `typography.remove()` failing with `:params-validation` by passing the bare uuid id (not a wrapping `{:id id}` map) to `delete-typography`, so the validation matches the `delete-typography [id]` arity in `frontend/src/app/main/data/workspace/libraries.cljs` [Github #8223](https://github.com/penpot/penpot/issues/8223)
 - Fix `PENPOT_OIDC_USER_INFO_SOURCE` flag being silently ignored (`userinfo` / `token`) in the OIDC callback, causing "incomplete user info" failures during registration [Github #9108](https://github.com/penpot/penpot/issues/9108)
 - Fix `get-view-only-bundle` crashing when a share-link viewer encounters a team member whose email lacks `@` (NullPointerException in `obfuscate-email`) or whose domain has no `.` (previously produced a dangling-dot `****@****.`); now the viewer-side obfuscation is nil-safe and omits the trailing dot when the domain has no TLD
 - Remove `corepack` from the MCP local launcher so it runs on Node.js 25+, where corepack is no longer bundled [Github #8877](https://github.com/penpot/penpot/issues/8877)
